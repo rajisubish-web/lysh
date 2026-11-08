@@ -1,6 +1,25 @@
 @tailwind base; @tailwind components; @tailwind utilities;
-html { scroll-behavior: smooth; }
 section[id] { scroll-margin-top: 4.5rem; }
-body { @apply bg-cream font-sans font-light text-ink antialiased; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+body { @apply bg-cream font-sans font-light text-ink antialiased; overflow-x: clip; }
+img { max-width: 100%; }
+/* 100svh avoids the jumping mobile address bar; 100vh is the fallback for older browsers */
+#home { min-height: 100vh; min-height: 100svh; }
 :focus-visible { outline: 2px solid #C5A16E; outline-offset: 3px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+#curtain { display: none; position: fixed; inset: 0; z-index: 100; background: #102319; }
+.anim-pending #curtain { display: block; }
+.gold-text { display: inline-block; padding-right: .05em; background-image: linear-gradient(135deg, #a67c4e 0%, #dcbd89 45%, #b08555 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+[data-tilt] { transform-style: preserve-3d; }
+.depth-frame { transform: translate3d(14px, 14px, -30px); }
+/* Horizontal property showcase (desktop only, applied by animations.js) */
+.stays-h [data-stays-pin] { height: 100vh; padding: 0; overflow: hidden; display: flex; align-items: center; }
+.stays-h [data-stays-track] { display: flex; align-items: center; gap: 6vw; width: max-content; max-width: none; margin: 0; padding: 0 8vw; }
+.stays-h [data-stays-track] > * { margin: 0 !important; }
+.stays-h [data-stays-intro] { width: 30vw; flex: none; }
+.stays-h [data-stays-panel] { width: 80vw; flex: none; }
+.stays-h [data-stays-panel] > *:first-child { order: 0; }
+.stays-h [data-stays-bar] { display: block; }
